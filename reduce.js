@@ -1,31 +1,24 @@
 function extractValue(array, key) {
     let count = 0;
     let values = array.reduce(function(accumulator, nextItem) {
-        if (accumulator === 'Elie') {
-            return accumulator += ' ';
-        } else if (count < array.length) {
-            return accumulator += nextItem[key] + ' ';
-        } else {
-            return accumulator += nextItem[key];
-        }
-        
-    }, array[0]['name']);
-    return Array.of(values.split(' '));
+        console.log(typeof accumulator);
+        accumulator.push(nextItem[key]);
+        return accumulator;
+    }, []);
+    return values;
 }
 
-//const babysfirstarray = [{name: 'Elie'}, {name: 'Tim'}, {name: 'Matt'}, {name: 'Colt'}];
-//console.log(extractValue(babysfirstarray,'name'));
+const babysfirstarray = [{name: 'Elie'}, {name: 'Tim'}, {name: 'Matt'}, {name: 'Colt'}];
+console.log(extractValue(babysfirstarray,'name'));
 
 //////////////////////////////
 function vowelCount(string) {
     string = string.toLowerCase();
     const filter = 'aeiou';
 
-    let noConsonants = string.split('').filter(function(char) {
+    return string.split('').filter(function(char) {
         return filter.indexOf(char) != -1;
-    })
-
-    return noConsonants.reduce(function(accumulator, nextItem) {
+    }).reduce(function(accumulator, nextItem) {
         if (accumulator[nextItem] === undefined) {
            // console.log(accumulator);
             accumulator[nextItem] = 1;
@@ -72,11 +65,11 @@ function isEven(val){
 }
 
 const x = [1,2,3,4,5,6,7,8];
-console.log(partition(x, isEven));
+//console.log(partition(x, isEven));
   
 function isLongerThanThreeCharacters(val) {
     return val.length > 3;
 }
   
 const names = ['Elie', 'Colt', 'Tim', 'Matt'];
-console.log(partition(names, isLongerThanThreeCharacters));
+//console.log(partition(names, isLongerThanThreeCharacters));
